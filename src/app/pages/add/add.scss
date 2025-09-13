@@ -1,0 +1,45 @@
+/* กล่องหลัก */
+.add-trip-container {
+  max-width: 650px;  /* ✅ กว้างขึ้น */
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* หัวข้อ */
+.form-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* ฟอร์ม */
+.full-width {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+/* ปุ่ม */
+.button-group {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-group button {
+  font-size: 18px;
+  padding: 12px 28px;
+  border-radius: 8px;
+}
+:host {
+  display: block;
+  padding: 2rem;
+  background: #68d9a6ea;
+  min-height: 100vh;
+  box-sizing: border-box;
+}

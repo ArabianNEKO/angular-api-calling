@@ -1,0 +1,66 @@
+<div class="edit-trip-container">
+  <mat-card class="edit-trip-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h2 class="form-title">✏️ แก้ไขข้อมูลทริป</h2>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- ชื่อทริป -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>ชื่อทริป</mat-label>
+        <input matInput [(ngModel)]="name" />
+      </mat-form-field>
+
+      <!-- ลิงก์รูปภาพ -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>ลิงก์รูปภาพ</mat-label>
+        <input matInput [(ngModel)]="coverimage" />
+      </mat-form-field>
+
+      <!-- โซน -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>โซน</mat-label>
+        <mat-select [(ngModel)]="destinationid">
+          <mat-option *ngFor="let d of destinations" [value]="d.value">
+            {{ d.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- ประเทศ -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>ประเทศ</mat-label>
+        <mat-select [(ngModel)]="country">
+          <mat-option *ngFor="let c of countries" [value]="c.name">
+            {{ c.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- ระยะเวลา -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>ระยะเวลา (วัน)</mat-label>
+        <input matInput type="number" [(ngModel)]="duration" />
+      </mat-form-field>
+
+      <!-- ราคา -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>ราคา (บาท)</mat-label>
+        <input matInput type="number" [(ngModel)]="price" />
+      </mat-form-field>
+
+      <!-- รายละเอียด -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>รายละเอียด</mat-label>
+        <textarea matInput rows="3" [(ngModel)]="detail"></textarea>
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions class="button-group">
+      <button mat-flat-button color="primary" (click)="updateTrip()">💾 บันทึก</button>
+      <button mat-stroked-button color="warn" [routerLink]="['/detail', tripId]">❌ ยกเลิก</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

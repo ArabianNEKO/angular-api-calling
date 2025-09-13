@@ -1,0 +1,79 @@
+/* Action bar */
+.action-bar {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.action-bar button {
+  font-size: 20px;
+  padding: 12px 28px;
+  border-radius: 8px;
+}
+
+/* Card หลัก */
+.trip-detail-card {
+  background: #d6dedc;
+  padding: 40px;
+  margin: 0 auto 40px auto;
+  max-width: 1200px; /* ✅ การ์ดกว้างขึ้น */
+  border-radius: 16px;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+/* ชื่อทริป */
+.trip-detail-card h2 {
+  margin-bottom: 28px;
+  font-size: 32px; /* ✅ ใหญ่ขึ้น */
+  color: #222;
+}
+
+/* รูป */
+.trip-detail-card img {
+  width: 100%;
+  max-width: 800px; /* ✅ รูปใหญ่ขึ้น */
+  max-height: 450px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 28px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ข้อมูลทริป */
+.trip-info {
+  text-align: left;
+  margin-bottom: 28px;
+  font-size: 20px; /* ✅ ฟอนต์ใหญ่ขึ้น */
+  line-height: 1.9;
+}
+
+.trip-info p {
+  margin: 10px 0;
+  color: #444;
+}
+
+.trip-info .trip-detail {
+  margin-top: 20px;
+  color: #555;
+}
+
+/* ปุ่มแก้ไข/ลบ */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.button-group button {
+  min-width: 140px; /* ✅ ปุ่มใหญ่ขึ้น */
+  font-size: 20px;
+  padding: 12px 24px;
+  border-radius: 8px;
+}
+:host {
+  display: block;
+  padding: 2rem;
+  background: #68d9a6ea;
+  min-height: 100vh;
+  box-sizing: border-box;
+}

@@ -1,0 +1,31 @@
+<!-- ปุ่มย้อนกลับ -->
+<div class="action-bar">
+  <button mat-flat-button color="primary" (click)="goBack()">ย้อนกลับ</button>
+</div>
+
+<!-- แสดงรายละเอียดทริป -->
+<div *ngFor="let trip of trips" class="trip-detail-card">
+  <h2>{{ trip.name }}</h2>
+
+  <!-- ถ้า url ของรูปยังทำงานได้ก็จะแสดงตามปกติ ถ้าไม่ onImageError จะทำงาน -->
+  <img
+    [src]="trip.coverimage"
+    alt="{{ trip.name }}"
+    (error)="onImageError($event)"
+  />
+
+  <!-- แสดงรายละเอียดต่าง ๆ ของทริป -->
+  <div class="trip-info">
+    <p><strong>โซน:</strong> {{ trip.destination_zone }}</p>
+    <p><strong>ประเทศ:</strong> {{ trip.country }}</p>
+    <p><strong>ราคา:</strong> {{ trip.price }}</p>
+    <p><strong>ระยะเวลา:</strong> {{ trip.duration }}</p>
+    <p class="trip-detail">{{ trip.detail }}</p>
+  </div>
+
+  <!-- ปุ่มจัดการ -->
+  <div class="button-group">
+    <button mat-flat-button color="accent" [routerLink]="['/edit', trip.idx]">แก้ไข</button>
+    <button mat-flat-button color="warn" (click)="deleteTrip()">ลบ</button>
+  </div>
+</div>
