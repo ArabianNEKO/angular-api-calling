@@ -13,6 +13,14 @@
   <button mat-raised-button color="primary" (click)="getTripByName(name)">ค้นหา</button>
 
   <mat-form-field appearance="outline" class="search-field">
+  <mat-label>🔎ค้นหาด้วยประเทศ</mat-label>
+  <input matInput #country placeholder="ใส่ชื่อประเทศ" />
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="getTripByCountry(country)">
+  ค้นหา
+</button>
+
+  <mat-form-field appearance="outline" class="search-field">
     <mat-label>เลือกปลายทาง</mat-label>
     <mat-select [(value)]="selectedDestinationZone" (selectionChange)="getTripByDestination()">
       <mat-option [value]="null">ทั้งหมด</mat-option>

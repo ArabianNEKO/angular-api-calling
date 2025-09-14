@@ -88,6 +88,20 @@ export class Main {
     }
   }
 
+async getTripByCountry(input: HTMLInputElement) {
+    const value = input.value.trim();
+
+    if (!value) {
+      this.trips = await this.tripService.getAllTrip();
+    } else {
+      const trips = await this.tripService.getTripByCountry(input.value);
+
+      this.trips = trips.filter(trip => 
+        trip.country.toLowerCase().includes(input.value.toLowerCase())
+      );
+    }
+}
+
   // ฟังก์ชันสำหรับค้นหาทริปด้วยโซน
   async getTripByDestination() {
     // ใช้ filter หาโซนนั้น ๆ ที่ต้องการ

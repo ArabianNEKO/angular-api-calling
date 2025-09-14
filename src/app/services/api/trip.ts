@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Constants } from '../../config/constants';
 import { HttpClient } from '@angular/common/http';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { TripGetResponse } from '../../model/response/trip_get_res';
 import { TripPostRequest } from '../../model/request/trip_post_req';
 import { TripPostResponse } from '../../model/response/trip_post_res';
@@ -36,6 +36,13 @@ export class Trip {
 
     return response as TripGetResponse[];
   }
+
+public async getTripByCountry(country: string){
+  const url = this.constants.API_ENDPOINT + '/trip';
+  const response = await lastValueFrom(this.http.get(url, { params: { country: country } }));
+
+  return response as TripGetResponse[];
+}
 
   // เพิ่มทริป
   public async addTrip(data: TripPostRequest): Promise<TripPostResponse> {
