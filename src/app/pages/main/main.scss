@@ -39,8 +39,8 @@
   border-radius: 16px;
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  background: #d6dedc; // พื้นหลังการ์ด
-  color: #030303;
+  background: #1e1e1e; // พื้นหลังการ์ดเข้ม
+  color: #f5f5f5;
 
   &:hover {
     transform: translateY(-6px);
@@ -66,8 +66,3 @@ html, body {
 }
 
 /* Angular ใช้ host ของ component */
-:host {
-  display: block;
-  background: #68d9a6ea;   // ดำสนิท
-  color: #f5f5f5;
-}

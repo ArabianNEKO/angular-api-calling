@@ -1,31 +1,43 @@
-<!-- ปุ่มย้อนกลับ -->
+<!-- 🔙 ปุ่มย้อนกลับ -->
 <div class="action-bar">
-  <button mat-flat-button color="primary" (click)="goBack()">ย้อนกลับ</button>
+  <button mat-stroked-button color="primary" (click)="goBack()">
+    ⬅️ ย้อนกลับ
+  </button>
 </div>
 
-<!-- แสดงรายละเอียดทริป -->
-<div *ngFor="let trip of trips" class="trip-detail-card">
-  <h2>{{ trip.name }}</h2>
+<!-- 🧳 แสดงรายละเอียดทริป -->
+<div *ngFor="let trip of trips" class="trip-detail-container">
+  <mat-card class="trip-detail-card">
+    <mat-card-header>
+      <mat-card-title>{{ trip.name }}</mat-card-title>
+      <mat-card-subtitle>{{ trip.country }} • {{ trip.destination_zone }}</mat-card-subtitle>
+    </mat-card-header>
 
-  <!-- ถ้า url ของรูปยังทำงานได้ก็จะแสดงตามปกติ ถ้าไม่ onImageError จะทำงาน -->
-  <img
-    [src]="trip.coverimage"
-    alt="{{ trip.name }}"
-    (error)="onImageError($event)"
-  />
+    <!-- รูปภาพ -->
+    <img
+      mat-card-image
+      [src]="trip.coverimage"
+      alt="{{ trip.name }}"
+      (error)="onImageError($event)"
+    />
 
-  <!-- แสดงรายละเอียดต่าง ๆ ของทริป -->
-  <div class="trip-info">
-    <p><strong>โซน:</strong> {{ trip.destination_zone }}</p>
-    <p><strong>ประเทศ:</strong> {{ trip.country }}</p>
-    <p><strong>ราคา:</strong> {{ trip.price }}</p>
-    <p><strong>ระยะเวลา:</strong> {{ trip.duration }}</p>
-    <p class="trip-detail">{{ trip.detail }}</p>
-  </div>
+    <!-- เนื้อหา -->
+    <mat-card-content>
+      <p><strong>🌍 โซน:</strong> {{ trip.destination_zone }}</p>
+      <p><strong>🏳️ ประเทศ:</strong> {{ trip.country }}</p>
+      <p><strong>💰 ราคา:</strong> {{ trip.price | number }} บาท</p>
+      <p><strong>🕒 ระยะเวลา:</strong> {{ trip.duration }} วัน</p>
+      <p class="trip-detail-text">{{ trip.detail }}</p>
+    </mat-card-content>
 
-  <!-- ปุ่มจัดการ -->
-  <div class="button-group">
-    <button mat-flat-button color="accent" [routerLink]="['/edit', trip.idx]">แก้ไข</button>
-    <button mat-flat-button color="warn" (click)="deleteTrip()">ลบ</button>
-  </div>
+    <!-- ปุ่ม -->
+    <mat-card-actions class="button-group">
+      <button mat-raised-button color="accent" [routerLink]="['/edit', trip.idx]">
+        ✏️ แก้ไข
+      </button>
+      <button mat-raised-button color="warn" (click)="deleteTrip()">
+        🗑️ ลบ
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>

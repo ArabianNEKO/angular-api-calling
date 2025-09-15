@@ -35,6 +35,8 @@ export class Main {
 
   // ใช้สำหรับเก็บชื่อโซน
   selectedDestinationZone: string = '';
+  country: string = '';
+
 
   // ไม่ได้เรียกใช้งาน api แต่ประกาศเอง
   destinations: Destinations[] = [
@@ -43,6 +45,22 @@ export class Main {
     { value: 3, name: 'เอเชียตะวันออกเฉียงใต้' },
     { value: 9, name: 'ประเทศไทย' },
   ];
+public countries: Country[] = [
+  { name: 'สวิตเซอร์แลนด์' }, 
+  { name: 'สิงคโปร์' }, 
+  { name: 'เวียดนาม' }, 
+  { name: 'ลาว' }, 
+  { name: 'ไอซ์แลนด์' }, 
+  { name: 'เยอรมันนี' }, 
+  { name: 'ญี่ปุ่น' }, 
+  { name: 'มัลดีฟส์' }, 
+  { name: 'อินเดีย' }, 
+  { name: 'มาเลเซีย' }, 
+  { name: 'ฝรั่งเศส' }, 
+  { name: 'เกาหลี' }, 
+  { name: 'ประเทศไทย' }, 
+  { name: 'จีน' }, 
+];
 
   // เมื่อเข้ามาที่หน้านี้จะทำงานทันที
   async ngOnInit() {
@@ -66,6 +84,7 @@ export class Main {
     // เรียกใช้งาน service จาก trip.service.ts
     if (!value) {
       this.trips = await this.tripService.getAllTrip();
+      alert('กรุณาใส่ ID ที่ต้องการค้นหา');
     } else {
       this.trips = [await this.tripService.getTripByID(+input.value) as TripGetResponse];
     }
@@ -78,6 +97,7 @@ export class Main {
     // เรียกใช้งาน service จาก trip.service.ts
     if (!value) {
       this.trips = await this.tripService.getAllTrip();
+      alert('กรุณาใส่ชื่อที่ต้องการค้นหา');
     } else {
       const trips = await this.tripService.getTripByName(input.value);
 
@@ -93,6 +113,7 @@ async getTripByCountry(input: HTMLInputElement) {
 
     if (!value) {
       this.trips = await this.tripService.getAllTrip();
+      alert('กรุณาใส่ประเทศที่ต้องการค้นหา');
     } else {
       const trips = await this.tripService.getTripByCountry(input.value);
 
@@ -101,18 +122,36 @@ async getTripByCountry(input: HTMLInputElement) {
       );
     }
 }
+//   async getTripByCountryDrop() {
+//     if (this.country) {
+//       this.trips = this.allTrips.filter(
+//         trip => trip.country === this.country
+//       );
+//     } else {
+// this.trips = this.allTrips;
+//     }
+//   }
 
-  // ฟังก์ชันสำหรับค้นหาทริปด้วยโซน
-  async getTripByDestination() {
-    // ใช้ filter หาโซนนั้น ๆ ที่ต้องการ
-    if (this.selectedDestinationZone) {
-      this.trips = this.allTrips.filter(
-        trip => trip.destination_zone === this.selectedDestinationZone
-      );
-    } else {
-      this.trips = this.allTrips;
-    }
+//    // ฟังก์ชันสำหรับค้นหาทริปด้วยโซน
+//   async getTripByDestination() {
+//     // ใช้ filter หาโซนนั้น ๆ ที่ต้องการ
+//     if (this.selectedDestinationZone) {
+//       this.trips = this.allTrips.filter(
+//         trip => trip.destination_zone === this.selectedDestinationZone
+//       );
+//     } else {
+//       this.trips = this.allTrips;
+//     }
+//   }
+
+ filterByCountry(selectedCountry: string) {
+  console.log('Selected country:', selectedCountry);
+  if (!selectedCountry) {
+    this.trips = this.allTrips; // แสดงทุกทริปเมื่อเลือก "ทั้งหมด"
+  } else {
+    this.trips = this.allTrips.filter(trip => trip.country === selectedCountry);
   }
+}
   
   // เอาไว้ใช้เมื่อ url ของรูปใช้งานไม่ได้ (แต่ไม่ได้รองรับ hotlinked)
   onImageError(event: Event) {
@@ -143,5 +182,8 @@ async getTripByCountry(input: HTMLInputElement) {
 // ใช้สำหรับการสร้างข้อมูลโซน
 interface Destinations {
   value: number;
+  name: string;
+}
+interface Country {
   name: string;
 }

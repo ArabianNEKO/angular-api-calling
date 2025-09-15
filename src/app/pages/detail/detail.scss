@@ -1,79 +1,56 @@
-/* Action bar */
 .action-bar {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.action-bar button {
-  font-size: 20px;
-  padding: 12px 28px;
-  border-radius: 8px;
-}
-
-/* Card หลัก */
-.trip-detail-card {
-  background: #d6dedc;
-  padding: 40px;
-  margin: 0 auto 40px auto;
-  max-width: 1200px; /* ✅ การ์ดกว้างขึ้น */
-  border-radius: 16px;
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
-  text-align: center;
-}
-
-/* ชื่อทริป */
-.trip-detail-card h2 {
-  margin-bottom: 28px;
-  font-size: 32px; /* ✅ ใหญ่ขึ้น */
-  color: #222;
-}
-
-/* รูป */
-.trip-detail-card img {
-  width: 100%;
-  max-width: 800px; /* ✅ รูปใหญ่ขึ้น */
-  max-height: 450px;
-  border-radius: 12px;
-  object-fit: cover;
-  margin-bottom: 28px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* ข้อมูลทริป */
-.trip-info {
-  text-align: left;
-  margin-bottom: 28px;
-  font-size: 20px; /* ✅ ฟอนต์ใหญ่ขึ้น */
-  line-height: 1.9;
-}
-
-.trip-info p {
-  margin: 10px 0;
-  color: #444;
-}
-
-.trip-info .trip-detail {
-  margin-top: 20px;
-  color: #555;
-}
-
-/* ปุ่มแก้ไข/ลบ */
-.button-group {
+  margin: 1rem 0;
   display: flex;
   justify-content: center;
-  gap: 24px;
+  align-items: center;
 }
 
-.button-group button {
-  min-width: 140px; /* ✅ ปุ่มใหญ่ขึ้น */
-  font-size: 20px;
-  padding: 12px 24px;
-  border-radius: 8px;
+.trip-detail-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
-:host {
-  display: block;
-  padding: 2rem;
-  background: #68d9a6ea;
-  min-height: 100vh;
-  box-sizing: border-box;
+
+.trip-detail-card {
+  width: 700px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #1e1e1e; // พื้นหลังการ์ดเข้ม
+  color: #f5f5f5;
+  box-shadow: 0 2px 8px rgba(12, 137, 3, 0.849);
+
+  mat-card-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #4caf50; // เขียว Material
+  }
+
+  mat-card-subtitle {
+    font-size: 1rem;
+    color: #aaa;
+  }
+
+  img {
+    max-height: 350px;
+    object-fit: cover;
+  }
+
+  mat-card-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 1rem;
+  }
+
+  .trip-detail-text {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #ddd;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem;
+  }
 }

@@ -5,5 +5,5 @@ import { Injectable } from '@angular/core';
 })
 export class Constants {
   // ใส่ ip เครื่องตัวเอง ที่ทำการรัน server.ts แล้ว
-  public readonly API_ENDPOINT: string = 'http://192.168.1.4:3000';
+  public readonly API_ENDPOINT: string = 'http://10.160.104.4:3000';
 }

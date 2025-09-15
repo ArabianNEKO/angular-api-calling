@@ -82,10 +82,10 @@ export class Add {
     try {
       // เรียกใช้ฟังก์ชันจาก trip.service.ts
       await this.tripService.addTrip(body);
-      alert('เพิ่มข้อมูลสำเร็จ');
+      alert('เพิ่มข้อมูลสำเร็จแล้ว');
       this.router.navigate(['']);
     } catch (err) {
-      alert('Error : ' + err);
+      alert('เพิ่มข้อมูลไม่ได้ Error : ' + err);
     }
   }
 }

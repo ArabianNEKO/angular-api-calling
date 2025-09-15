@@ -44,6 +44,7 @@ public async getTripByCountry(country: string){
   return response as TripGetResponse[];
 }
 
+
   // เพิ่มทริป
   public async addTrip(data: TripPostRequest): Promise<TripPostResponse> {
     const url = this.constants.API_ENDPOINT + '/trip';
@@ -69,4 +70,10 @@ public async getTripByCountry(country: string){
 
     return response;
   }
+
+  public async getTripByCountryDrop(country: string): Promise<TripGetResponse[]> {
+    const trips = await this.getAllTrip();
+    return trips.filter(trip => trip.country === country);
 }
+
+  }
